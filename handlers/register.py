@@ -3,7 +3,7 @@ from aiogram.types import CallbackQuery, Message
 from aiogram.fsm.context import FSMContext
 
 from states.register import Register
-from storage import load_data, save_data
+from services.user_service import create_user
 from keyboards.start import main_kb
 router = Router()
 
@@ -26,9 +26,7 @@ async def handle_name_state(
     user_id = str(message.from_user.id)
     user_name = message.text
     
-    users_list = load_data()
-    users_list[user_id] = user_name
-    save_data(users_list)
+    create_user(user_id, user_name)
     await state.clear()
     await message.answer(
         "Your name saved successfully"

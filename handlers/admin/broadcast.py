@@ -3,7 +3,7 @@ from aiogram import Router, F, Bot
 from aiogram.types import CallbackQuery, Message
 from aiogram.fsm.context import FSMContext
 
-from storage import load_data, save_data
+from storage import load_data
 
 from states.admin.broadcast import Broadcast
 
