@@ -15,9 +15,10 @@ from handlers.developer import router as dev_router
 
 load_dotenv()
 TOKEN=os.getenv('TOKEN')
+bot = Bot(TOKEN)
 
 async def main():
-    bot = Bot(TOKEN)
+    
     dp = Dispatcher()
 
     dp.include_router(start_router)

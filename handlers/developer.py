@@ -2,6 +2,7 @@ from aiogram import Router, F
 from aiogram.types import CallbackQuery, Message
 from aiogram.fsm.context import FSMContext
 
+from main import bot
 from storage import load_data, save_data
 from states.users import User
 from keyboards.developer import list_kb, reject_del
@@ -80,6 +81,11 @@ async def delete_user_by_id(
         await message.answer(
             f"user with id: {user_id}"
             " successfully deleted from the bot"
+            )
+        await bot.send_message(
+            user_id, 
+            "Your profile has been deleted from the bot"
+            " By the developer!"
             )
         await state.clear()
     else: 
