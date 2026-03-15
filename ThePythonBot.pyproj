@@ -21,25 +21,31 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="handlers\admins.py" />
-    <Compile Include="handlers\developer.py" />
+    <Compile Include="handlers\admin\admin_start.py" />
+    <Compile Include="handlers\admin\dev_start.py" />
+    <Compile Include="handlers\admin\broadcast.py" />
+    <Compile Include="handlers\admin\userlist.py" />
+    <Compile Include="handlers\feedback.py" />
     <Compile Include="handlers\help.py" />
     <Compile Include="handlers\register.py" />
     <Compile Include="handlers\start.py" />
     <Compile Include="handlers\users.py" />
-    <Compile Include="keyboards\developer.py" />
+    <Compile Include="keyboards\admin.py" />
     <Compile Include="keyboards\start.py" />
     <Compile Include="main.py" />
     <Compile Include="middlewares\user.py" />
+    <Compile Include="states\admin\broadcast.py" />
     <Compile Include="states\register.py" />
-    <Compile Include="states\users.py" />
+    <Compile Include="states\admin\del_user.py" />
     <Compile Include="storage.py" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="handlers\admin\" />
     <Folder Include="middlewares\" />
     <Folder Include="keyboards\" />
     <Folder Include="handlers\" />
     <Folder Include="states\" />
+    <Folder Include="states\admin\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include=".env" />

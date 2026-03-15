@@ -2,23 +2,11 @@ from aiogram import Router, F, Bot
 from aiogram.types import CallbackQuery, Message
 from aiogram.fsm.context import FSMContext
 
-#from main import bot
 from storage import load_data, save_data
-from states.users import User
-from keyboards.developer import list_kb, reject_del
-from keyboards.developer import delete_user_kb, back_to_menu
+from states.admin.del_user import User
+from keyboards.admin import reject_del, dev_menu
+from keyboards.admin import delete_user_kb, back_to_menu
 router = Router()
-
-@router.callback_query(F.data == 'dev_role')
-async def handle_user_role(
-    callback: CallbackQuery
-    ):
-    await callback.message.edit_text(
-        "Hello Developer!",
-        reply_markup=list_kb
-        )
-
-    await callback.answer()
 
 @router.callback_query(F.data == 'dList')
 async def get_list_of_users(
@@ -64,7 +52,7 @@ async def back_to_devmenu(
     ):
     await callback.message.edit_text(
         "Hello Developer!",
-        reply_markup=list_kb
+        reply_markup=dev_menu
         )
 
 @router.message(User.user_id)

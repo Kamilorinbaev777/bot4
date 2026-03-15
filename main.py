@@ -5,13 +5,16 @@ from aiogram.types import CallbackQuery, Message
 from dotenv import load_dotenv
 
 from middlewares.user import userMiddleware
-#from middlewares.register import registerMiddleware
+
 from handlers.start import router as start_router
 from handlers.register import router as reg_router
 from handlers.help import router as help_router
 from handlers.users import router as users_router
-from handlers.admins import router as admins_router
-from handlers.developer import router as dev_router
+from handlers.feedback import router as f_router
+from handlers.admin.admin_start import router as admins_router
+from handlers.admin.dev_start import router as dev_router
+from handlers.admin.broadcast import router as broadcast_router
+from handlers.admin.userlist import router as userlist_router
 
 load_dotenv()
 TOKEN=os.getenv('TOKEN')
@@ -27,6 +30,9 @@ async def main():
     dp.include_router(users_router)
     dp.include_router(admins_router)
     dp.include_router(dev_router)
+    dp.include_router(broadcast_router)
+    dp.include_router(userlist_router)
+    dp.include_router(f_router)
 
     #dp.message.middleware(registerMiddleware())
     dp.callback_query.middleware(userMiddleware())
