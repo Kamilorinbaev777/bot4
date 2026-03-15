@@ -1,4 +1,4 @@
-from aiogram import Router, F
+from aiogram import Router, F, Bot
 from aiogram.types import CallbackQuery, Message
 from aiogram.fsm.context import FSMContext
 
@@ -70,7 +70,8 @@ async def back_to_devmenu(
 @router.message(User.user_id)
 async def delete_user_by_id(
     message: Message,
-    state: FSMContext
+    state: FSMContext,
+    bot: Bot
     ):
     user_id = str(message.text)
     all_users = load_data()
@@ -81,6 +82,11 @@ async def delete_user_by_id(
         await message.answer(
             f"user with id: {user_id}"
             " successfully deleted from the bot"
+            )
+        await bot.send_message(
+            user_id, 
+            "You are deleted from the bot"
+            "\nBy the developer!"
             )
         await state.clear()
     else: 
